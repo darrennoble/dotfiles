@@ -1,0 +1,10 @@
+[[ $#@ -eq 1 ]] || { echo Give exactly one argument ; return 1 }
+test -e "$1" || { echo No such file or directory: "$1" ; return 1 }
+local newname=$1
+if vared -c -p 'rename to: ' newname &&
+  [[ -n $newname && $newname != $1 ]]
+then
+  command mv -i -- $1 $newname
+else
+  echo Some error occured; return 1
+fi

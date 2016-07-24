@@ -1,0 +1,2 @@
+export GOPATH=~/dev/viv-go
+cd $GOPATH/src
