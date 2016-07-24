@@ -1,0 +1,17 @@
+zshconf:/home/darren/.oh-my-zsh/custom
+plconf:/home/darren/.config/powerline
+p2:/usr/lib/python2.7/site-packages
+aw:/home/darren/.config/awesome
+viv:/home/darren/dev/vivint
+vpt:/home/darren/dev/vivint/PerformanceTools
+vdl:/home/darren/dev/vivint/DataListener
+qt:/home/darren/.config/qtile
+go:/home/darren/dev/go/src
+sp:/home/darren/dev/vivint/Platform/MY_ENV/lib/python2.7/site-packages
+bd:/home/darren/dev/vivint/bemuse/BemuseDev
+steam:/home/darren/.local/share/Steam/SteamApps/common
+steam-wine:/home/darren/.local/share/wineprefixes/steam/drive_c/Program Files/Steam/SteamApps/common
+qtile:/usr/lib/python2.7/site-packages/qtile-0.9.1-py2.7.egg/libqtile
+awlib:/usr/share/awesome/lib
+vic:/usr/share/lua/5.2/vicious
+kd:/home/darren/dev/personal/scala/AndroidKidDraw
