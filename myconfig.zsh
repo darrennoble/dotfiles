@@ -46,6 +46,7 @@ alias psgrp='ps ax o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,comm,group,g
 
 #alias pacman='sudo pacman'
 alias pacman='sudo pacmatic'
+alias pmupdate='sudo systemctl start reflector.service && /usr/bin/pacman -Sy'
 
 alias vi='nvim'
 alias vim='nvim'
