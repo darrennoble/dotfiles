@@ -1,0 +1,25 @@
+if [ $1 ] ; then
+    echo "activating $1"
+    if [[ -a $1/bin/activate ]]; then
+        source $1/bin/activate
+    else
+        echo "Error: $1/bin/activate doesn't exist"
+    fi
+else
+    local found=0
+
+    for d in *(/); do
+        if [[ -a $d/bin/activate ]]; then
+            found=1
+            echo "found env \"$d\" to activate"
+            source $d/bin/activate
+            break
+        fi
+    done
+
+    if ((found == 0)); then
+        echo "activating Vivint pyton env"
+        source ~/dev/vivint/Platform/MY_ENV/bin/activate
+        cd ~/dev/vivint/Platform
+    fi
+fi
