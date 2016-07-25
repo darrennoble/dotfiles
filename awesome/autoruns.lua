@@ -2,6 +2,7 @@
 awful.util.spawn("xset +dpms")
 awful.util.spawn("xset dpms 0 0 300")
 awful.util.spawn("setxkbmap -model pc105 -layout us -option ctrl:swapcaps")
+awful.util.spawn("xrandr --dpi 160")
 awful.util.spawn(os.getenv('HOME') .. "/bin/run_once xcape")
 awful.util.spawn(os.getenv('HOME') .. "/bin/run_once nm-applet")
 --awful.util.spawn(os.getenv('HOME') .. "/bin/run_once kmix")
