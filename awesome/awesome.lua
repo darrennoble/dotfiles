@@ -20,13 +20,20 @@ wibox = require("wibox")
 -- launch the Cairo Composite Manager
 -- awful.util.spawn_with_shell("cairo-compmgr &")
 
+-- Themes define colours, icons, and wallpapers
+beautiful.init(awful.util.getdir("config") .. "/theme/black-blue/theme.lua")
+--beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+for s = 1, screen.count() do
+	gears.wallpaper.maximized(awful.util.getdir("config") .. "/wallpaper.jpg", s)
+end
+
 terminal = os.getenv("TERMINAL") or "terminator"
 
 local freedesktop_utils = require("freedesktop.utils")
 
 freedesktop_utils.terminal = terminal
-freedesktop_utils.icon_theme = "oxygen"
---freedesktop_utils.icon_theme = beautiful.icon_theme
+--freedesktop_utils.icon_theme = "oxygen"
+freedesktop_utils.icon_theme = beautiful.icon_theme
 --freedesktop_utils.icon_sizes = {beautiful.icon_theme_size}
 
 -- main menu builder
@@ -35,13 +42,6 @@ myrc_mainmenu.terminal = terminal
 myrc_memory = require("myrc.memory")
 
 myrc.memory.init()
-
--- Themes define colours, icons, and wallpapers
-beautiful.init(awful.util.getdir("config") .. "/theme/black-blue/theme.lua")
---beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-for s = 1, screen.count() do
-	gears.wallpaper.maximized(awful.util.getdir("config") .. "/wallpaper.jpg", s)
-end
 
 -- my widgets
 mywidgets = require("mywidgets")
