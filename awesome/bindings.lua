@@ -43,8 +43,9 @@ globalkeys = awful.util.table.join(globalkeys,
     --awful.key({ modkey,         }, "w", function () mymainmenu:show(true)        end),
     --awful.key({ modkey,         }, "w", function () mymainmenu:show() end),
     awful.key({ modkey,           }, "w", function () mymainmenu:toggle() end),
+    awful.key({ modkey,           }, "s", function () awful.util.spawn("xscreensaver-command -lock") end),
     --awful.key({ modkey,           }, "s", function () awful.util.spawn("xlock -mode blank -dpmsstandby 1 -dpmssuspend 1 -dpmsoff 1") end),
-    awful.key({ modkey,           }, "s", function () awful.util.spawn("dm-tool lock") end),
+    --awful.key({ modkey,           }, "s", function () awful.util.spawn("dm-tool lock") end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),

@@ -70,11 +70,12 @@ autoload -Uz rn
 autoload -Uz vg
 
 #path
-export JAVA_HOME=/opt/java8
+#export JAVA_HOME=/opt/java8
 #export PATH=~/bin:$JAVA_HOME/bin:/usr/bin:$PATH:/sbin:/usr/sbin:~/bin/xog/bin
+#export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin
 export GOROOT=/usr/lib/go
 export GOPATH=~/dev/go
-export PATH=~/bin:/usr/bin:$PATH:/sbin:/usr/sbin:$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$GOPATH/bin:~/.gem/ruby/current/bin
+export PATH=~/bin:/usr/bin:$PATH:$GOPATH/bin:~/.gem/ruby/current/bin  #/sbin:/usr/sbin:
 #export CLASSPATH=.:/usr/share/java/log4j.jar:/usr/share/java/mysql-connector-java.jar
 export WINEARCH=win32
 export WINEPREFIX=~/.wine32

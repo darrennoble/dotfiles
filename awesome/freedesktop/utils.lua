@@ -10,8 +10,6 @@ local pairs = pairs
 local tonumber = tonumber
 local dirs = require("freedesktop.dirs")
 
-local naughty = require("naughty")
-
 module("freedesktop.utils")
 
 terminal = 'xterm'
@@ -99,11 +97,6 @@ function lookup_icon(arg)
         -- icons with absolute path and supported (AFAICT) formats
         return arg.icon
     else
-        if not icon_theme then
-            io.stderr:write('icon theme: is nil\n')
-        else
-            io.stderr:write('icon theme: ' .. icon_theme .. '\n')
-        end
         -- scan theme directories if no cached theme data found
         if not icon_theme_data then
             local initial_themes = {}
@@ -172,7 +165,6 @@ function lookup_icon(arg)
                 for j, size in ipairs(sizes) do
                     if icon_theme_data.paths[theme][size] then
                         for k, path in ipairs(icon_theme_data.paths[theme][size]) do
-                            --io.stderr:write("icon path: " .. path .. "\n")
                             table.insert(icon_path, path)
                         end
                     end
@@ -418,7 +410,6 @@ function scan_theme_data(icon_themes, theme_data)
                 local theme_path = icon_path .. theme
                 if directory_exists(theme_path) then
                     local theme_index_file = theme_path .. '/index.theme'
-                    io.stderr:write("icon theme index: " .. theme_index_file .. "\n")
                     local sizes, paths, inherited_themes
                     if file_exists(theme_index_file) then
                         local theme_index = parse_theme_index_file({ file = theme_index_file })
