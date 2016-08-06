@@ -349,7 +349,7 @@ function parse_theme_index_file(arg)
         for i, path in ipairs(paths) do
             if file_data[path] and file_data[path]['Size'] then
                 local type = file_data[path]['Type']
-                if (not type or type:lower() == 'threshold' or type:lower() == 'fixed') then
+                --if (not type or type:lower() == 'threshold' or type:lower() == 'fixed') then
                     local size = file_data[path]['Size']
                     if not theme_index.paths[size] then
                         theme_index.paths[size] = {}
@@ -359,7 +359,7 @@ function parse_theme_index_file(arg)
                         sizes[size] = true
                     end
                     table.insert(theme_index.paths[size], path)
-                end
+                --end
             end
         end
         table.sort(theme_index.sizes, function(a, b)
