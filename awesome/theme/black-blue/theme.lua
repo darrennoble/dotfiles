@@ -101,7 +101,7 @@ theme.layout_dwindle = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
 theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 
 theme.icon_theme = "oxygen"
-theme.icon_theme_size = "32x32"
+theme.icon_theme_size = "32"
 theme.default_client_icon = ""
 
 return theme

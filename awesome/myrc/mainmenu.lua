@@ -16,19 +16,19 @@ module("myrc.mainmenu")
 
 local env = {}
 
+terminal = 'xterm'
+
 -- Reserved.
 function init(enviroment)
 	env = enviroment
 end
 
-local terminal = (os.getenv("TERMINAL") or 'terminator') .. " "
-local man = (env.man or terminal .. " -e man") .. " "
 local editor = "gvim "
 local run = (env.run or "gmrun")
 
-freedesktop_utils.terminal = terminal
---freedesktop_utils.icon_theme = beautiful.icon_theme
---freedesktop_utils.icon_sizes = {beautiful.icon_theme_size}
+function man(cmd)
+    return terminal .. ' -e "man' .. cmd .. '"'
+end
 
 function get_favorites()
 	local favorites_menu = {
@@ -39,15 +39,15 @@ function get_favorites()
 --		{ "Konsole", "konsole", freedesktop_utils.lookup_icon({icon = 'utilities-terminal'}) },
 		{ "        -- Browsers --", nil, nil}, --separator
 --		{ "Chromium", "chromium", freedesktop_utils.lookup_icon({icon = 'chromium'}) },
-		{ "Chrome", "google-chrome-beta", freedesktop_utils.lookup_icon({icon = 'google-chrome-beta'}) },
+		{ "Chrome", "google-chrome-stable", freedesktop_utils.lookup_icon({icon = 'google-chrome'}) },
 		{ "Firefox", "firefox", freedesktop_utils.lookup_icon({icon = 'firefox'}) },
 		{ "        -- Development --", nil, nil}, --separator
 		{ "IntelliJ IDEA", "idea.sh", freedesktop_utils.lookup_icon({icon = 'idea'}) },
 --		{ "PCManFM", "pcmanfm", freedesktop_utils.lookup_icon({icon = 'system-file-manager'}) },
 		{ "Thunar", "thunar", freedesktop_utils.lookup_icon({icon = 'Thunar'}) },
 		{ "        -- Chat --", nil, nil}, --separator
+		{ "Slack", "slack", freedesktop_utils.lookup_icon({icon = 'slack'}) },
 		{ "Pidgin", "pidgin", freedesktop_utils.lookup_icon({icon = 'pidgin'}) },
-		{ "HipChat", "hipchat", freedesktop_utils.lookup_icon({icon = 'hipchat'}) },
 		{ "        -- Media --", nil, nil}, --separator
 		{ "SMplayer", "smplayer", freedesktop_utils.lookup_icon({icon = 'smplayer'}) },
 		{ "kmix", "kmix", freedesktop_utils.lookup_icon({icon = 'kmix'}) },
@@ -67,7 +67,7 @@ end
 -- env - table with string constants - command line to different apps
 function build()
 	local myawesomemenu = {
-		{ "Manual", man .. "awesome", freedesktop_utils.lookup_icon({ icon = 'help-contents' }) },
+		{ "Manual", man("awesome"), freedesktop_utils.lookup_icon({ icon = 'help-contents' }) },
 		{ "Edit config", editor .. awful.util.getdir("config") .. "/awesome.lua", freedesktop_utils.lookup_icon({ icon = 'package_settings' }) },
 		{ "Edit theme", editor .. awful.util.getdir("config") .. "/theme.lua" , freedesktop_utils.lookup_icon({ icon = 'package_settings' }) },
 		{"", nil, nil}, --separator

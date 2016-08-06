@@ -20,8 +20,18 @@ wibox = require("wibox")
 -- launch the Cairo Composite Manager
 -- awful.util.spawn_with_shell("cairo-compmgr &")
 
+terminal = os.getenv("TERMINAL") or "terminator"
+
+local freedesktop_utils = require("freedesktop.utils")
+
+freedesktop_utils.terminal = terminal
+freedesktop_utils.icon_theme = "oxygen"
+--freedesktop_utils.icon_theme = beautiful.icon_theme
+--freedesktop_utils.icon_sizes = {beautiful.icon_theme_size}
+
 -- main menu builder
 myrc_mainmenu = require("myrc.mainmenu")
+myrc_mainmenu.terminal = terminal
 myrc_memory = require("myrc.memory")
 
 myrc.memory.init()
@@ -36,12 +46,9 @@ end
 -- my widgets
 mywidgets = require("mywidgets")
 
-local freedesktop_utils = require("freedesktop.utils")
-
 -- {{{ Variable definitions
 
 -- This is used later as the default terminal and editor to run.
-terminal = os.getenv("TERMINAL") or "terminator"
 editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -75,7 +82,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 'web', 'term', 'vim', 'dev', 5, 6, 7, 'snd', 'im' }, s, awful.layout.suit.tile)
+    tags[s] = awful.tag({ 'web', 'term', 'dev', 4, 5, 6, 7, 'snd', 'im' }, s, awful.layout.suit.tile)
 end
 -- }}}
 
