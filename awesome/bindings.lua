@@ -151,7 +151,7 @@ client.add_signal("manage", function (c, startup)
         end
 
         local floating = myrc.memory.get("floating", name, awful.client.floating.get(c))
-        save_floating(c, floating)
+        --save_floating(c, floating)
         if floating == true then
             local centered = get_centered(c)
             if centered then

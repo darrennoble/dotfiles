@@ -128,9 +128,10 @@ mytextclock = awful.widget.textclock("%a %b %d, %I:%M", 7)
 function client_name(c)
 	local cls = c.class or ""
 	local inst = c.instance or ""
-	local role = c.role or ""
+	--local role = c.role or ""
 	local ctype = c.type or ""
-	return cls..":"..inst..":"..role..":"..ctype
+	return cls..":"..inst..":"..ctype
+	--return cls..":"..inst..":"..role..":"..ctype
 end
 
 function save_floating(c, f)
@@ -160,9 +161,9 @@ end
 function save_titlebar(c, val)
 	myrc.memory.set("titlebar", client_name(c), val)
 	if val == true then
-		awful.titlebar.add(c, { modkey = modkey })
+		awful.titlebar.show(c)
 	elseif val == false then
-		awful.titlebar.remove(c)
+		awful.titlebar.hide(c)
 	end
 	return val
 end
