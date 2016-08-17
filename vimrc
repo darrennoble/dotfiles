@@ -267,6 +267,7 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme="powerlineish"
+let g:airline_section_z="%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#%#__restore__#%#__accent_bold#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#%#__restore__# :%3vc %3o%{g:airline_symbols.crypt}"
 
 " VimWiki
 let g:vimwiki_folding="expr"
