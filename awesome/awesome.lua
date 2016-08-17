@@ -169,7 +169,7 @@ function save_titlebar(c, val)
 end
 
 function get_titlebar(c, def)
-	return myrc.memory.get("titlebar", client_name(c), def)
+	return myrc.memory.get("titlebar", client_name(c), def or false)
 end
 
 function save_geometry(c, val)
