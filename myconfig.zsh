@@ -68,6 +68,7 @@ autoload -Uz a
 autoload -Uz extract_archive
 autoload -Uz rn
 autoload -Uz vg
+autoload -Uz docker-ip
 
 #path
 #export JAVA_HOME=/opt/java8
