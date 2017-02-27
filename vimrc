@@ -112,6 +112,7 @@ Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 
 "file plugins
 Plug 'kien/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
 "Plugin 'wincent/command-t'
 "Plugin 'scrooloose/nerdtree'
 Plug 'tpope/vim-vinegar'
@@ -138,12 +139,18 @@ Plug 'ervandew/supertab'
 Plug 'matze/vim-move'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char = '│'
+set list lcs=tab:\│\ 
+Plug 'mhinz/vim-signify'
 
 "language plugins
 "Plug 'scrooloose/syntastic'
 Plug 'tfnico/vim-gradle'
 Plug 'derekwyatt/vim-scala'
 Plug 'fatih/vim-go'
+Plug 'jodosha/vim-godebug'
+Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'garyburd/go-explorer', { 'do': 'go get -u github.com/garyburd/go-explorer/src/getool' }
 Plug 'jplaut/vim-arduino-ino'
 " python
@@ -151,6 +158,7 @@ Plug 'davidhalter/jedi-vim'
 "Plugin 'tmhedberg/SimpylFold'
 "Plugin 'klen/python-mode'
 "Plugin 'jaredly/vim-debug'
+Plug 'udalov/kotlin-vim'
 
 "JavaScript
 Plug 'burnettk/vim-angular'
@@ -282,6 +290,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.o$']
 
+"Ctrl P
+"nmap <C-P> :CtrlP<CR>
+nmap <C-B> :CtrlPBuffer<CR>
+nmap <C-F> :CtrlPFunky<CR>
 
 " Arduino
 let g:vim_arduino_library_path = "/usr/share/arduino"

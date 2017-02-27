@@ -1,3 +1,10 @@
+local wibox = require("wibox")
+local vicious = require("vicious")
+local awful = require("awful")
+local beautiful = require("beautiful")
+
+beautiful.init(awful.util.getdir("config") .. "/theme/black-blue/theme.lua")
+
 local volume_text = wibox.widget.textbox()
 vicious.register(volume_text, function()
         local proc = io.popen("pamixer --get-volume")
@@ -15,8 +22,7 @@ vicious.register(volume_text, function()
 
     end, 3)
 
-local volume_widget = {}
-for s = 1, screen.count() do
+function new()
     local layout = wibox.layout.margin()
     layout:set_margins(5)
     local bar = awful.widget.progressbar()
@@ -34,10 +40,12 @@ for s = 1, screen.count() do
         return vol
     end, 3)
 
-    volume_widget[s] = wibox.layout.fixed.horizontal()
-    volume_widget[s]:add(volume_text)
-    volume_widget[s]:add(layout)
-    volume_widget[s]:add(sectionend)
+    volume_widget = wibox.layout.fixed.horizontal()
+    volume_widget:add(volume_text)
+    volume_widget:add(layout)
+    volume_widget:add(sectionend)
+
+    return volume_widget
 end
 
-return volume_widget
+return new

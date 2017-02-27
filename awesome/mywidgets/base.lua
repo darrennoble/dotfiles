@@ -1,3 +1,10 @@
+local wibox = require("wibox")
+local vicious = require("vicious")
+local awful = require("awful")
+local beautiful = require("beautiful")
+
+beautiful.init(awful.util.getdir("config") .. "/theme/black-blue/theme.lua")
+
 -- colors
 section_color = "#2266FF"
 highlight_color = "#DDDDDD"

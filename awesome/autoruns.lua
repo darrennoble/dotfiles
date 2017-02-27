@@ -1,3 +1,5 @@
+local awful = require("awful")
+
 -- awful.util.spawn("killall trayer")
 awful.util.spawn("xset +dpms")
 awful.util.spawn("xset dpms 0 0 300")

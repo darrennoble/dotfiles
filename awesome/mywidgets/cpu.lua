@@ -1,5 +1,11 @@
+local wibox = require("wibox")
+local vicious = require("vicious")
+local awful = require("awful")
+local beautiful = require("beautiful")
+
+beautiful.init(awful.util.getdir("config") .. "/theme/black-blue/theme.lua")
+
 -- CPU Status
---cputext = widget({ type = "textbox" })
 local cputext = wibox.widget.textbox()
 vicious.register(cputext, function()
 		local cmd = "uptime | cut -d: -f5"
@@ -22,13 +28,12 @@ vicious.register(cputext, function()
 		return sectionstart_text .. sectionTitle('CPU') .. cpuLoad .. " " .. separator_text .. str .. separator_text
 	end, 3)
 
-local cpuwidget = {}
-for s = 1, screen.count() do
+function new() 
 	-- Initialize widget
-    local layout = wibox.layout.margin()
-    layout:set_margins(5)
+	local layout = wibox.layout.margin()
+	layout:set_margins(5)
 	local graph = awful.widget.graph()
-    layout:set_widget(graph)
+	layout:set_widget(graph)
 	-- Graph properties
 	graph:set_width(50)
 	graph:set_height(20)
@@ -39,10 +44,12 @@ for s = 1, screen.count() do
 	-- Register widget
 	vicious.register(graph, vicious.widgets.cpu, "$1")
 
-	cpuwidget[s] = wibox.layout.fixed.horizontal()
-	cpuwidget[s]:add(cputext)
-	cpuwidget[s]:add(layout)
-    cpuwidget[s]:add(sectionend)
+	cpuwidget = wibox.layout.fixed.horizontal()
+	cpuwidget:add(cputext)
+	cpuwidget:add(layout)
+	cpuwidget:add(sectionend)
+
+    return cpuwidget
 end
 
-return cpuwidget
+return new

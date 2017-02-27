@@ -1,7 +1,7 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
-local freedesktop_utils = require("freedesktop.utils")
-local freedesktop_menu = require("freedesktop.menu")
+local menubar_utils = require("menubar.utils")
+local freedesktop = require("freedesktop")
 local wibox = require("wibox")
 
 local io = io
@@ -27,32 +27,33 @@ local editor = "gvim "
 local run = (env.run or "gmrun")
 
 function man(cmd)
-    return terminal .. ' -e "man' .. cmd .. '"'
+	return terminal .. ' -e "man' .. cmd .. '"'
 end
 
 function get_favorites()
 	local favorites_menu = {
-		{ "        -- Terminals --", nil, nil}, --separator
---		{ "Terminal", terminal, freedesktop_utils.lookup_icon({icon = 'utilities-terminal'}) },
---		{ "Terminal", "Terminal", freedesktop_utils.lookup_icon({icon = 'terminal'}) },
-		{ "Terminator", "terminator", freedesktop_utils.lookup_icon({icon = 'terminator'}) },
---		{ "Konsole", "konsole", freedesktop_utils.lookup_icon({icon = 'utilities-terminal'}) },
-		{ "        -- Browsers --", nil, nil}, --separator
---		{ "Chromium", "chromium", freedesktop_utils.lookup_icon({icon = 'chromium'}) },
-		{ "Chrome", "google-chrome-stable", freedesktop_utils.lookup_icon({icon = 'google-chrome'}) },
-		{ "Firefox", "firefox", freedesktop_utils.lookup_icon({icon = 'firefox'}) },
-		{ "        -- Development --", nil, nil}, --separator
-		{ "IntelliJ IDEA", "idea.sh", freedesktop_utils.lookup_icon({icon = 'idea'}) },
---		{ "PCManFM", "pcmanfm", freedesktop_utils.lookup_icon({icon = 'system-file-manager'}) },
-		{ "Thunar", "thunar", freedesktop_utils.lookup_icon({icon = 'Thunar'}) },
-		{ "        -- Chat --", nil, nil}, --separator
-		{ "Slack", "slack", freedesktop_utils.lookup_icon({icon = 'slack'}) },
-		{ "Pidgin", "pidgin", freedesktop_utils.lookup_icon({icon = 'pidgin'}) },
-		{ "        -- Media --", nil, nil}, --separator
-		{ "SMplayer", "smplayer", freedesktop_utils.lookup_icon({icon = 'smplayer'}) },
-		{ "kmix", "kmix", freedesktop_utils.lookup_icon({icon = 'kmix'}) },
-		{ "pavucontrol", "pavucontrol", freedesktop_utils.lookup_icon({icon = 'multimedia-volume-control'}) },
-		{ "Pulseaudio Equalizer", "pulseaudio-equalizer-gtk", freedesktop_utils.lookup_icon({icon = 'view-media-equalizer'}) },
+		{ "		-- Terminals --", nil, nil}, --separator
+--		{ "Terminal", terminal, menubar_utils.lookup_icon('utilities-terminal') },
+--		{ "Terminal", "Terminal", menubar_utils.lookup_icon('terminal') },
+		{ "Terminology", "terminology", menubar_utils.lookup_icon('teminology') },
+		{ "Terminator", "terminology", menubar_utils.lookup_icon('teminology') },
+--		{ "Konsole", "konsole", menubar_utils.lookup_icon('utilities-terminal') },
+		{ "		-- Browsers --", nil, nil}, --separator
+--		{ "Chromium", "chromium", menubar_utils.lookup_icon('chromium') },
+		{ "Chrome", "google-chrome-stable", menubar_utils.lookup_icon('google-chrome') },
+		{ "Firefox", "firefox", menubar_utils.lookup_icon('firefox') },
+		{ "		-- Development --", nil, nil}, --separator
+		{ "IntelliJ IDEA", "idea.sh", menubar_utils.lookup_icon('idea') },
+--		{ "PCManFM", "pcmanfm", menubar_utils.lookup_icon('system-file-manager') },
+		{ "Thunar", "thunar", menubar_utils.lookup_icon('Thunar') },
+		{ "		-- Chat --", nil, nil}, --separator
+		{ "Slack", "slack", menubar_utils.lookup_icon('slack') },
+		{ "Pidgin", "pidgin", menubar_utils.lookup_icon('pidgin') },
+		{ "		-- Media --", nil, nil}, --separator
+		{ "SMplayer", "smplayer", menubar_utils.lookup_icon('smplayer') },
+		{ "kmix", "kmix", menubar_utils.lookup_icon('kmix') },
+		{ "pavucontrol", "pavucontrol", menubar_utils.lookup_icon('multimedia-volume-control') },
+		{ "Pulseaudio Equalizer", "pulseaudio-equalizer-gtk", menubar_utils.lookup_icon('view-media-equalizer') },
 	}
 
 	return favorites_menu
@@ -67,24 +68,24 @@ end
 -- env - table with string constants - command line to different apps
 function build()
 	local myawesomemenu = {
-		{ "Manual", man("awesome"), freedesktop_utils.lookup_icon({ icon = 'help-contents' }) },
-		{ "Edit config", editor .. awful.util.getdir("config") .. "/awesome.lua", freedesktop_utils.lookup_icon({ icon = 'package_settings' }) },
-		{ "Edit theme", editor .. awful.util.getdir("config") .. "/theme.lua" , freedesktop_utils.lookup_icon({ icon = 'package_settings' }) },
+		{ "Manual", man("awesome"), menubar_utils.lookup_icon('help-contents') },
+		{ "Edit config", editor .. awful.util.getdir("config") .. "/awesome.lua", menubar_utils.lookup_icon('package_settings') },
+		{ "Edit theme", editor .. awful.util.getdir("config") .. "/theme.lua" , menubar_utils.lookup_icon('package_settings') },
 		{"", nil, nil}, --separator
-		{ "Restart", awesome.restart, freedesktop_utils.lookup_icon({ icon = 'system-reboot' }) },
-		{ "Quit", awesome.quit, freedesktop_utils.lookup_icon({ icon = 'system-log-out' }) },
+		{ "Restart", awesome.restart, menubar_utils.lookup_icon('system-reboot') },
+		{ "Quit", awesome.quit, menubar_utils.lookup_icon('system-log-out') },
 	}
 
 	local favorites_menu = get_favorites()
 
 	local myshutdownmenu = {
-		{"Shutdown", "sudo halt", freedesktop_utils.lookup_icon({icon = 'system-shutdown'}) },
-		{"Restart", "sudo reboot", freedesktop_utils.lookup_icon({icon = 'system-reboot'}) },
-		{"Logout", awesome.quit, freedesktop_utils.lookup_icon({icon = 'system-log-out'}) },
+		{"Shutdown", "sudo halt", menubar_utils.lookup_icon('system-shutdown') },
+		{"Restart", "sudo reboot", menubar_utils.lookup_icon('system-reboot') },
+		{"Logout", awesome.quit, menubar_utils.lookup_icon('system-log-out') },
 	}
 
 	local mymainmenu_items_head = {
-		{ "Favorites", favorites_menu, freedesktop_utils.lookup_icon({icon = 'bookmarks'})},
+		{ "Favorites", favorites_menu, menubar_utils.lookup_icon('favorites')},
 		{"", nil, nil} --separator
 	}
 
@@ -92,15 +93,13 @@ function build()
 		{ "", nil, nil}, --separator
 		{ "Awesome", myawesomemenu, beautiful.awesome_icon },
 		{ "", nil, nil}, --separator
-		{ "Shutdown", myshutdownmenu, freedesktop_utils.lookup_icon({icon = 'system-shutdown'}) }
+		{ "Shutdown", myshutdownmenu, menubar_utils.lookup_icon('system-shutdown') }
 	}
 
-	local mymainmenu_items = {}
-	for _, item in ipairs(mymainmenu_items_head) do table.insert(mymainmenu_items, item) end
-	for _, item in ipairs(freedesktop_menu.new()) do table.insert(mymainmenu_items, item) end
-	for _, item in ipairs(mymainmenu_items_tail) do table.insert(mymainmenu_items, item) end
-
-	return awful.menu({ items = mymainmenu_items })
+	return freedesktop.menu.build({
+		before = mymainmenu_items_head,
+		after = mymainmenu_items_tail,
+	})
 end
 
 

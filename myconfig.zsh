@@ -5,7 +5,7 @@
 
 
 powerline-daemon -q
-. /usr/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
+. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #setup color vars
@@ -48,16 +48,16 @@ alias psgrp='ps ax o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,comm,group,g
 alias pacman='sudo pacmatic'
 alias pmupdate='sudo systemctl start reflector.service && /usr/bin/pacman -Sy'
 
-alias vi='nvim'
-alias vim='nvim'
-alias svi='sudo nvim'
+#alias vim='nvim'
+alias vi='vim'
+alias svi='sudo vim'
 vs () { vim -S ~/.vim/sessions/$* }
 
 alias setbg='feh --bg-scale ~/.config/qtile/wallpaper.jpg'
 
 alias tmux="tmux -2"
 
-export EDITOR="nvim"
+export EDITOR="vim"
 export SHELL="/usr/bin/zsh"
 
 eval `dircolors -b /usr/share/LS_COLORS`
@@ -72,8 +72,8 @@ autoload -Uz docker-ip
 
 #path
 #export JAVA_HOME=/opt/java8
-#export PATH=~/bin:$JAVA_HOME/bin:/usr/bin:$PATH:/sbin:/usr/sbin:~/bin/xog/bin
-#export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin
+export JAVA_HOME=/usr/lib/jvm/java-8-jdk
+export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin
 export GOROOT=/usr/lib/go
 export GOPATH=~/dev/go
 export PATH=~/bin:/usr/bin:$PATH:$GOPATH/bin:~/.gem/ruby/current/bin  #/sbin:/usr/sbin:
@@ -96,9 +96,10 @@ gpg-connect-agent /bye
 #export SSH_AUTH_SOCK   # enable gpg-agent for ssh
 
 #ssh agent setup
-eval $(ssh-agent|grep -v "echo Agent pid")
+#eval $(ssh-agent|grep -v "echo Agent pid")
 #eval $(ssh-agent) > /dev/null
-ssh-add > /dev/null 2>&1
+#ssh-add > /dev/null 2>&1
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 autoload -U zmv
 
