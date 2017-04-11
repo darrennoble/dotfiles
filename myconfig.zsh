@@ -3,10 +3,12 @@
 # https://github.com/powerline/powerline
 # this file goes in ~/.oh-my-zsh/custom
 
-
 powerline-daemon -q
 . /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# make it so I can use ctrl-s in vim
+stty -ixon
 
 #setup color vars
 #autoload colors zsh/terminfo
