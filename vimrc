@@ -15,7 +15,8 @@ set smartcase
 
 set hi=1000          " remember more commands and search history
 set undolevels=1000  " use many muchos levels of undo
-set wildignore=*.swp,*.bak,*.pyc,*.class,**/build
+set wildignore+=*.swp,*.bak,*.pyc,*.class,**/build
+set wildmenu
 
 set visualbell
 set noerrorbells
@@ -108,31 +109,49 @@ Plug 'Pychimp/vim-luna'
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
 Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-"Plugin 'chriskempson/tomorrow-theme'
+"Plug 'chriskempson/tomorrow-theme'
 
 "file plugins
 Plug 'kien/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
-"Plugin 'wincent/command-t'
-"Plugin 'scrooloose/nerdtree'
+"Plug 'wincent/command-t'
+"Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-vinegar'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
-"Plugin 'dhruvasagar/vim-vinegar'
-"Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'dhruvasagar/vim-vinegar'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'weynhamz/vim-plugin-minibufexpl'
 
 "plugins
 Plug 'majutsushi/tagbar'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+"Plug 'Shougo/neosnippet'
+"Plug 'Shougo/neosnippet-snippets'
 Plug 'dgryski/vim-godef'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
+" ultisnips config
+let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsListSnippets="s"
+let g:UltiSnipsJumpForwardTrigger="n"
+let g:UltiSnipsJumpBackwardTrigger="p"
+let g:UltiSnipsEditSplit="vertical"
+
+" YouCompleteMe and settings
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+
 Plug 'benmills/vimux'
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'kien/rainbow_parentheses.vim'
+"Plug 'tpope/vim-fugitive'
+"Plug 'kien/rainbow_parentheses.vim'
 Plug 'MarcWeber/vim-addon-local-vimrc'
 Plug 'vimwiki/vimwiki'
 Plug 'ervandew/supertab'
@@ -143,21 +162,21 @@ Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '│'
 set list lcs=tab:\│\ 
 Plug 'mhinz/vim-signify'
+Plug 'dhruvasagar/vim-table-mode'
 
 "language plugins
 "Plug 'scrooloose/syntastic'
 Plug 'tfnico/vim-gradle'
 Plug 'derekwyatt/vim-scala'
 Plug 'fatih/vim-go'
-Plug 'jodosha/vim-godebug'
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+"Plug 'jodosha/vim-godebug'
 Plug 'garyburd/go-explorer', { 'do': 'go get -u github.com/garyburd/go-explorer/src/getool' }
 Plug 'jplaut/vim-arduino-ino'
 " python
 Plug 'davidhalter/jedi-vim'
-"Plugin 'tmhedberg/SimpylFold'
-"Plugin 'klen/python-mode'
-"Plugin 'jaredly/vim-debug'
+"Plug 'tmhedberg/SimpylFold'
+"Plug 'klen/python-mode'
+"Plug 'jaredly/vim-debug'
 Plug 'udalov/kotlin-vim'
 
 "JavaScript
@@ -215,7 +234,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-let g:go_snippet_engine = "neosnippet"
+"let g:go_snippet_engine = "ultisnips"
 let g:godef_split=3
 
 au FileType go nmap <Leader>s <Plug>(go-implements)
@@ -261,10 +280,6 @@ set laststatus=2
 
 " tagbar
 nmap <leader>t :TagbarToggle<CR>
-
-" YouCompleteMe settings
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Powerline
 "python from powerline.vim import setup as powerline_setup
