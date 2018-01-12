@@ -7,6 +7,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 set ts=4 ic sw=4 expandtab sta ai bs=2 is hls ru vb mouse=a background=dark nu
+set encoding=utf-8
 set path+=**
 set tags+=tags
 

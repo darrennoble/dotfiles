@@ -4,8 +4,11 @@
 # this file goes in ~/.oh-my-zsh/custom
 
 powerline-daemon -q
-. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh ]] && . /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+[[ -f /usr/share/powerline/bindings/zsh/powerline.zsh ]] && . /usr/share/powerline/bindings/zsh/powerline.zsh
+
+[[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # make it so I can use ctrl-s in vim
 stty -ixon
@@ -62,7 +65,7 @@ alias tmux="tmux -2"
 export EDITOR="vim"
 export SHELL="/usr/bin/zsh"
 
-eval `dircolors -b /usr/share/LS_COLORS`
+[[ -f  /usr/share/LS_COLORS ]] && eval `dircolors -b /usr/share/LS_COLORS`
 
 #user functions
 export fpath=( ~/.zfunc "${fpath[@]}" )
@@ -184,8 +187,8 @@ preexec_functions+=(myTitlePreexec)
 # activate vivint virtual env
 export VIVINT_CONFIG_DIR=$HOME/dev/vivint/Platform/ConfigFiles
 
-clear
-archey3
+#clear
+#archey3
 
 # TMUX
 #if [[ -z "$TMUX" ]] ;then
