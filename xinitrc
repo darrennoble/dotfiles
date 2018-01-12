@@ -8,5 +8,7 @@ setxkbmap -model pc105 -layout us -option ctrl:swapcaps
 #change dpi
 xrandr --dpi 160
 
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+
 #start wm
 exec $1
