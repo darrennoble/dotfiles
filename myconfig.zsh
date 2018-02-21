@@ -47,6 +47,8 @@ alias md='mkdir -p'
 alias rscp='rsync -aP'
 alias rsmv='rsync -aP --remove-source-files'
 
+alias psgrep="ps -ef | grep -v grep | grep"
+alias psg="psgrep"
 alias psgrp='ps ax o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,comm,group,gid'
 
 #alias pacman='sudo pacman'

@@ -106,7 +106,8 @@ end
 --mylock = widget({ type = 'imagebox'})
 mylock_lock = wibox.widget.imagebox()
 mylock_lock:set_image(menubar_utils.lookup_icon('system-lock-screen'))
-mylock_lock:buttons(awful.button({ }, 1, function() awful.util.spawn('xlock -mode blank -dpmsstandby 1 -dpmssuspend 1 -dpmsoff 1') end))
+--mylock_lock:buttons(awful.button({ }, 1, function() awful.util.spawn('xlock -mode blank -dpmsstandby 1 -dpmssuspend 1 -dpmsoff 1') end))
+mylock_lock:buttons(awful.button({ }, 1, function() awful.util.spawn('xscreensaver-command -lock') end))
 --awful.widget.layout.margins[mylock] = { left = 2 }
 mylock = wibox.layout.margin(mylock_lock, 2, 0, 0, 0)
 -- }}}

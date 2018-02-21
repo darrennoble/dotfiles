@@ -6,7 +6,7 @@ xset dpms 0 0 300
 setxkbmap -model pc105 -layout us -option ctrl:swapcaps
 
 #change dpi
-xrandr --dpi 160
+xrandr --dpi 140
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
